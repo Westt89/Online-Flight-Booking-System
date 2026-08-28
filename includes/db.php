@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$dbname = 'booking_system';
-$username = 'root';
-$password = '';
+$host     = getenv('DB_HOST');
+$dbname   = getenv('DB_NAME');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASS');
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
