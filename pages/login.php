@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             justify-content: center;
             align-items: center;
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                        url('../assets/images/login-bg.jpg') no-repeat center center fixed;
+                        url('images/login-bg.jpg.jpeg') no-repeat center center fixed;
             background-size: cover;
             position: relative;
             overflow-x: hidden;
