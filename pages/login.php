@@ -52,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('../assets/images/login-bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-attachment: fixed;
             position: relative;
             overflow-x: hidden;
         }
