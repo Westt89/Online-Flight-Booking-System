@@ -9,23 +9,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = 'user'; // Default role
 
-    // Check if email already exists
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+    try {
+        // Check if email already exists
+        $stmt = $pdo->prepare("SELECT 1 FROM users WHERE email = :email");
+        $stmt->execute([':email' => $email]);
+        $user = $stmt->fetch();
 
-    if ($user) {
-        echo "Email already exists. Please use a different email.";
-    } else {
-        // Insert new user into the database
-        $stmt = $pdo->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$name, $email, $password, $role]);
+        if ($user) {
+            echo "Email already exists. Please use a different email.";
+        } else {
+            // Insert new user
+            $stmt = $pdo->prepare("INSERT INTO users (name, email, password, role) 
+                                   VALUES (:name, :email, :password, :role)");
+            $stmt->execute([
+                ':name' => $name,
+                ':email' => $email,
+                ':password' => $password,
+                ':role' => $role
+            ]);
 
-        // Redirect to login page after successful registration
-        redirect('login.php');
+            // Redirect to login page
+            redirect('login.php');
+        }
+    } catch (PDOException $e) {
+        echo "Registration error: " . $e->getMessage();
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
