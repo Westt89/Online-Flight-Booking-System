@@ -52,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('https://source.unsplash.com/1920x1080/?airplane,sky') no-repeat center center fixed;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-size: cover;
+            background-attachment: fixed;
             position: relative;
             overflow-x: hidden;
         }
